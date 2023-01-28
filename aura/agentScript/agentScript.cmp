@@ -1,0 +1,26 @@
+<aura:component access="global" implements="lightning:availableForFlowScreens">
+    
+    <lightning:conversationToolkitAPI aura:id="conversationAPI" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}"/>
+    
+    <aura:attribute name="script" type="String" required="true" description="Script to be read by the service agent." />
+    <aura:attribute name="color" type="String" default="rgb(0, 112, 210)" description="CSS color value in RGB or hex format." />
+    <aura:attribute name="size" type="String" default="medium" description="Text size (small, medium, or large)." />
+    <aura:attribute name="recordId" type="String" description="ID of the current record." />
+    <aura:attribute name="showChatButton" type="Boolean" access="PRIVATE" default="false" description="Flag to show copy to chat button." />
+    
+	<div aura:id="scriptBox" class="slds-box script-box" style="{!'border: solid 2px ' + v.color + ';'}">
+        <span class="slds-float_left" style="{!'fill: ' + v.color + ';'}">
+        	<lightning:icon iconName="utility:questions_and_answers" />
+    	</span>
+        <lightning:buttonIcon iconName="utility:copy" variant="border-filled" title="Copy to Clipboard" class="slds-float_right slds-m-left--xx-small" onclick="{!c.copyToClipboard}" />
+        <aura:if isTrue="{!v.showChatButton}">
+            <lightning:buttonIcon iconName="utility:chat" variant="border-filled" title="Copy to Chat" class="slds-float_right" onclick="{!c.copyToChat}" />
+        </aura:if>
+        <div class="{!'script slds-text-heading--' + v.size}">
+            {!v.script}
+        </div>
+    </div>
+
+</aura:component>

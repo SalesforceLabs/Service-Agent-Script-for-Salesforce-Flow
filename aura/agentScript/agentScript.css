@@ -1,0 +1,15 @@
+.THIS.script-box {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.THIS .slds-icon {
+    fill: inherit;
+}
+
+.THIS .script {
+    padding-left: 2.75rem;
+    padding-right: 2.75rem;
+    vertical-align: middle;
+    line-height: 1.5;
+}
